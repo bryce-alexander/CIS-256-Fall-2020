@@ -98,6 +98,7 @@ class Fraction {
    */
   static private int gcd(int x, int y) {
     /* Replace the following line with your solution. */
+
     if (y == 0) {
       return x;
     } else {
@@ -108,7 +109,8 @@ class Fraction {
   /** Put the Fraction class through some tests.
    * @param argv is not used.
    */
-  public static void main (String[] argv) {
+
+  public static void main(String[] argv) {
 
     /* Test all four contructors and toString. */
     Fraction f0 = new Fraction();
@@ -127,6 +129,7 @@ class Fraction {
 
     Fraction sumOfTwo = f1.add(f2);                      // Sum of f1 and f2.
     Fraction sumOfThree = f0.add(f1.add(f2));            // Sum of f0, f1, and f2.
+
 
     System.out.println("The sum of " + f1 + " and " + f2 + " is " + sumOfTwo);
     System.out.println("The sum of " + f0 + ", " + f1 + " and " + f2 + " is " +
