@@ -98,13 +98,17 @@ class Fraction {
    */
   static private int gcd(int x, int y) {
     /* Replace the following line with your solution. */
-    return 1;
+    if (y == 0) {
+      return x;
+    } else {
+      return gcd(y, x % y);
+    }
   }
 
   /** Put the Fraction class through some tests.
    * @param argv is not used.
    */
-  public static void main(String[] argv) {
+  public static void main (String[] argv) {
 
     /* Test all four contructors and toString. */
     Fraction f0 = new Fraction();
@@ -121,9 +125,8 @@ class Fraction {
     /* Test the add method. */
     System.out.println("\nTesting add:");
 
-    Fraction sumOfTwo = new Fraction((f1.numerator*f2.denominator+f2.numerator*f1.denominator),(f1.denominator*f2.denominator));              // Sum of f1 and f2.
-    Fraction sumOfThree = new Fraction((f0.numerator*f1.denominator*f2.denominator+f1.numerator*f0.denominator*f2.denominator+
-            f2.numerator*f1.denominator*f0.denominator),(f0.denominator*f1.denominator*f2.denominator));             // Sum of f0, f1, and f2.
+    Fraction sumOfTwo = f1.add(f2);                      // Sum of f1 and f2.
+    Fraction sumOfThree = f0.add(f1.add(f2));            // Sum of f0, f1, and f2.
 
     System.out.println("The sum of " + f1 + " and " + f2 + " is " + sumOfTwo);
     System.out.println("The sum of " + f0 + ", " + f1 + " and " + f2 + " is " +
