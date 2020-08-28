@@ -68,8 +68,7 @@ class Date {
    *  @return the number of days in the given month.
    */
   public static int daysInMonth(int month, int year) {
-    ArrayList<Integer> thirtyDays = new ArrayList();
-    thirtyDays.addAll(Arrays.asList(4,6,9,11));
+    ArrayList thirtyDays = new ArrayList(Arrays.asList(4, 6, 9, 11));
     if (month!=2) {
       if (thirtyDays.contains(month)) {
         return 30;
@@ -112,11 +111,11 @@ class Date {
    *  @return true if and only if this Date is before d. 
    */
   public boolean isBefore(Date d) {
-    return (this.year * this.month * this.day)<(d.year*d.month*d.day);
+/*    return (this.year * this.month * this.day)<(d.year*d.month*d.day);*/
 /*    if ((this.year * this.month * this.day)<(d.year*d.month*d.day)){
       return true;
     }*/
-/*    if (this.year<d.year) {
+    if (this.year<d.year) {
       return true;
     }
     else if (this.year>d.year) {
@@ -130,15 +129,15 @@ class Date {
     }
     else if (this.day<d.day) {
       return true;
-    }*/
-    //return false;                        // replace this line with your solution
+    }
+    return false;                        // replace this line with your solution
   }
 
   /** Determines whether this Date is after the Date d.
    *  @return true if and only if this Date is after d. 
    */
   public boolean isAfter(Date d) {
-    return (this.year * this.month * this.day)<(d.year*d.month*d.day);
+    return (!isBefore(d) && this!=d);
                       // replace this line with your solution
   }
 
@@ -148,7 +147,11 @@ class Date {
    *  year.)
    */
   public int dayInYear() {
-    return 0;                           // replace this line with your solution
+    int dayCount=day;
+    for (int i=month-1; i>0; i--){
+      dayCount+=daysInMonth(i,year);
+    }
+    return dayCount;                           // replace this line with your solution
   }
 
   /** Determines the difference in days between d and this Date.  For example,
@@ -157,7 +160,17 @@ class Date {
    *  @return the difference in days between d and this date.
    */
   public int difference(Date d) {
-    return (this.year * this.month * this.day)-(d.year*d.month*d.day);                           // replace this line with your solution
+    int originTotalDays=this.dayInYear();
+    int targetTotalDays=d.dayInYear();
+    for (int y=this.year-1; y>0; y--) {
+      Date _tempDate = new Date(12,31,y);
+      originTotalDays += _tempDate.dayInYear();// replace this line with your solution
+    }
+    for (int y=d.year-1; y>0; y--) {
+      Date _tempDate = new Date(12,31,y);
+      targetTotalDays += _tempDate.dayInYear();// replace this line with your solution
+    }
+    return originTotalDays-targetTotalDays;
   }
 
   public static void main(String[] argv) {
@@ -243,5 +256,12 @@ class Date {
     System.out.println("13/12/2019 (false): " + Date.isValidDate(13,12,2019));
     System.out.println("3/0/2019 (false): " + Date.isValidDate(3,0,2019));
 
+    System.out.println("\ndayInYear test: ");
+    Date t1 = new Date(3,1,2020);
+    System.out.println("3/1/2020 (61): " + t1.dayInYear());
+    Date t2 = new Date("3/1/2019");
+    System.out.println("3/1/2019 (60): " + t2.dayInYear());
+    Date t3 = new Date("8/23/2012");
+    System.out.println("8/23/2012 (236): " + t3.dayInYear());
   }
 }
