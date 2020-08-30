@@ -6,11 +6,22 @@ public class Lab4 {
         public void method(String test){
             System.out.println(test);
         }
+        public static final String test = "Constant string";
+        public static void override() {
+            System.out.println("Method from superclass");
+        }
     }
 
     static class Y extends X implements testInterface{
         public Y(){
 
+        }
+        public static void override() {
+            System.out.println("Method from subclass");
+        }
+        public static void main(){
+            //System.out.println(test);
+            //System.out.println(X.test);
         }
     }
 
@@ -18,7 +29,9 @@ public class Lab4 {
         //public void method(String test);
         //public int method(String test);
         //public void method(int i);
-        public void method(String test2);
+        //public void method(String test2);
+        public static final String test = "Constant string";
+        //public static final String test = "Other constant string";
     }
 
     public static void main(String[] args) {
@@ -77,8 +90,30 @@ public class Lab4 {
         // Part III: More Conflicting Declarations
 
         /*
+        --Uncomment lines in testInterface and Y to compare output--
+        PART A: Java compiles the result with the same name whether or not values match
+        PART B: Java will not compile the result because the variable is ambiguous regardless of value match
+        PART C: Main method can access the static class method in X if directly referenced (X.test)
 
         */
+        // Y y = new Y();
+        // y.main();
+
+
+        // PART IV: Method Overriding
+        /*
+        PART A: Java will call the method from the subclass UNLESS the methods are static
+        PART B: It does not call either method because it fails casting at runtime
+        PART C: If the method is static, you can call the superclass method from the subclass by casting
+                it to the superclass.  This is not possible if the methods are not static.
+        */
+
+        Y y = new Y();
+        y.override();
+        ((X)y).override();
+
+        //X x = new X();
+        //((Y)x).override();
 
 
 
