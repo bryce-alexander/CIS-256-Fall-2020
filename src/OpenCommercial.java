@@ -38,8 +38,8 @@ class OpenCommercial {
             textLine[i] = lineOfText.readLine();
         }
 
-        for(int i = 0; i < textLine.length; i++) {
-            System.out.println(textLine[i]);
+        for (String s : textLine) {
+            System.out.println(s);
         }
     }
 }
