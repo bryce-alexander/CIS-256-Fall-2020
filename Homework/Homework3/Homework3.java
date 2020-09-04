@@ -30,7 +30,7 @@ public class Homework3 {
     for (int i=0,k=1; i<ints.length; i++,k++) {
       if (!(k!=ints.length && ints[i] == ints[k])) {
         newArray[finalIndex] = ints[i];
-//        finalIndex++;
+        finalIndex++;
       }
     }
     for (int i=0; i<ints.length; i++)

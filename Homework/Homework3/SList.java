@@ -138,6 +138,18 @@ public class SList {
 
   public void twin() {
     // Fill in your solution here.  (Ours is seven lines long.)
+    SList newList = new SList();
+    if (!this.isEmpty()) {
+      SListNode currentNode = this.head;
+      while (currentNode.next!=null) {
+        newList.insertEnd(currentNode.item);
+        newList.insertEnd(currentNode.item);
+        currentNode=currentNode.next;
+      }
+      newList.insertEnd(currentNode.item);
+      newList.insertEnd(currentNode.item);
+    }
+    this.head = newList.head;
   }
 
   /**
