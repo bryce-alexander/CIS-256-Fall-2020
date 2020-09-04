@@ -57,7 +57,7 @@ public class Lab4 {
         //X xa[] = new X[3];
         //Y ya[] = new Y[3];
         //ya = (Y[]) xa;
-        //ya = ya1;
+        //ya = xa;
 
         // PART C
         /*
@@ -96,21 +96,22 @@ public class Lab4 {
         PART C: Main method can access the static class method in X if directly referenced (X.test)
 
         */
-        // Y y = new Y();
-        // y.main();
+         //Y y = new Y();
+         //y.main();
 
 
         // PART IV: Method Overriding
         /*
         PART A: Java will call the method from the subclass UNLESS the methods are static
-        PART B: It does not call either method because it fails casting at runtime
+        PART B: It would call subclass method except it fails casting at runtime
         PART C: If the method is static, you can call the superclass method from the subclass by casting
-                it to the superclass.  This is not possible if the methods are not static.
+                it to the superclass.  This is not possible if the methods are not static unless the subclass
+                method calls the superclass method.
         */
 
-        Y y = new Y();
-        y.override();
-        ((X)y).override();
+        //Y y = new Y();
+        //y.override();
+        //((X)y).override();
 
         //X x = new X();
         //((Y)x).override();

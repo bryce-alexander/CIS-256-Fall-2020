@@ -31,7 +31,7 @@ class OpenCommercial {
     inputLine = keyboard.readLine();
 
     // Inserts input into URL format as string
-    String urlString = "https://www." + inputLine + ".com/";
+    String urlString = "http://www." + inputLine + ".com/";
 
     // Converts string to a URL
     URL urltest = new URL(urlString);
