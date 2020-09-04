@@ -112,6 +112,17 @@ public class SList {
 
   public void squish() {
     // Fill in your solution here.  (Ours is eleven lines long.)
+    if (!this.isEmpty()) {
+      SList tempList = new SList();
+      SListNode currentNode = this.head;
+      for (int i = 0; currentNode.next != null; currentNode = currentNode.next) {
+        if (!(currentNode.item.equals(currentNode.next.item))) {
+          tempList.insertEnd(currentNode.item);
+        }
+      }
+      tempList.insertEnd(currentNode.item);
+      this.head = tempList.head;
+    }
   }
 
   /**
