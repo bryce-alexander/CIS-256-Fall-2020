@@ -11,6 +11,7 @@
 public class SList {
 
   private SListNode head;
+  private SListNode tail;   // Added the tail attribute.
   private int size;
 
   /**
@@ -20,6 +21,7 @@ public class SList {
   public SList() {
     size = 0;
     head = null;
+    tail = null;   // Assigned the initial tail node to null for an empty SList
   }
 
   /**
@@ -47,6 +49,7 @@ public class SList {
 
   public void insertFront(Object obj) {
     head = new SListNode(obj, head);
+    if (length()==0) { tail = head; }   // Checks to see if the SList is empty; if it is, head is ALSO the tail.
     size++;
   }
 
@@ -56,15 +59,26 @@ public class SList {
    **/
 
   public void insertEnd(Object obj) {
+    /* For this modification of insertEnd which runs in constant time, I took the following steps:
+    * 1. Assign the newly created node in the else statement to the tail.
+    * 2. Assign a new SListNode created with the insertEnd obj parameter to the node following the current tail.
+    * 3. Reassign the newly assigned follower node as the new tail.
+    *
+    * Modifications made to other methods:
+    * SList Class:  The tail property was added as an attribute.
+    * SList Constructor: Assigned null to tail to match the null assignment of head.
+    * insertFront: Modified to check if the SList called on is empty; if it is, the head is also the tail.
+    *
+    * Visit the corresponding methods to see a line-by-line explanation of my changes.  */
+
     if (head == null) {
       head = new SListNode(obj);
+      tail = head;
     } else {
-      SListNode node = head;
-      while (node.next != null) {
-        node = node.next;
-      }
+      SListNode node = tail;
       node.next = new SListNode(obj);
-    }
+      tail = node.next;
+      }
     size++;
   }
 
@@ -124,6 +138,15 @@ public class SList {
 
   public static void main (String[] args) {
     // Fill in your solution for Part I here.
+    SList list1 = new SList();
+    list1.insertFront(6);
+    list1.insertEnd(9);
+    list1.insertEnd(12);
+    System.out.println("This list should be [  6  9  12  ].  It is:   " + list1.toString());
+
+    list1.insertFront(3);
+    list1.insertEnd(15);
+    System.out.println("This list should be [  3  6  9  12  15  ].  It is:   " + list1.toString());
 
     testEmpty();
     testAfterInsertFront();
