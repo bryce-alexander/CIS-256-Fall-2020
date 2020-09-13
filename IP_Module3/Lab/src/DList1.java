@@ -1,5 +1,7 @@
 /* DList1.java */
 
+import javax.swing.*;
+
 /**
  *  A DList1 is a mutable doubly-linked list.  (No sentinel, not
  *  circularly linked.)
@@ -93,16 +95,17 @@ public class DList1 {
    *  list is empty, do nothing.
    */
   public void removeFront() {
-    if (tail!=null){
-    head.item = tail.item;
-    size-=1;
+    if (size == 0) {
     }
-    else if (size<=1){
-      head = new DListNode1();
-      tail = new DListNode1();
-      head= null;
+    else if (size==1) {
+      head = null;
       tail = null;
-      size=0;
+      size--;
+    }
+    else{
+      head = head.next;
+      head.prev = null;
+      size--;
     }
   }
 

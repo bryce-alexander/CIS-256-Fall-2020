@@ -95,7 +95,7 @@ public class DList {
    *  Performance:  runs in O(1) time.
    */
   public void insertFront(Object item) {
-   head.next  =  newNode(item, head, head.next);
+   head.next = newNode(item, head, head.next);
    head.next.next.prev = head.next;
    size ++;
   }
@@ -157,7 +157,7 @@ public class DList {
    *  Performance:  runs in O(1) time.
    */
   public DListNode next(DListNode node) {
-    if (node.next == head) {
+    if (node == null ||node.next == head ) {
       return null;
     } else
       return node.next;
