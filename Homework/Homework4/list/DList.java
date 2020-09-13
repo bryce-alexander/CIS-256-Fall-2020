@@ -86,10 +86,7 @@ public class DList {
     list.DListNode insertNode = newNode(item, head, head.next);
     head.next.prev = insertNode;
     head.next = insertNode;
-//    if (isEmpty()) { head.prev = insertNode; }
     size++;
-
-
   }
 
   /**
@@ -308,6 +305,7 @@ public class DList {
     System.out.println("4 next (should be null): " + testList.next(testList.back()));
     System.out.println("2 prev (should be null): " + testList.prev(testList.front()));
     System.out.println("Head prev (should be 4): " + testList.head.prev.item);
+
 
 
   }
