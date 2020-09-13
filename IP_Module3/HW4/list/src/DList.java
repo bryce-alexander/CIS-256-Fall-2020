@@ -52,7 +52,7 @@ public class DList {
    *  DList() constructor for an empty DList.
    */
   public DList() {
-    head = new DListNode("--",  null, null);
+    head = newNode ("--", null, null);
     head.next = head;
     head.prev = head;
     size =0;
@@ -60,7 +60,10 @@ public class DList {
 
   public DList(Object i) {
     head = newNode("--",  null, null);
+    head.next= head;
+    head.prev= head;
     head.next = newNode(i, head.next, head.prev);
+    head.prev = head.next;
     size++;
   }
 
@@ -92,9 +95,9 @@ public class DList {
    *  Performance:  runs in O(1) time.
    */
   public void insertFront(Object item) {
-    head.next =  newNode(item, head, head.next);
-
-    size ++;
+   head.next  =  newNode(item, head, head.next);
+   head.next.next.prev = head.next;
+   size ++;
   }
 
   /**
@@ -103,8 +106,9 @@ public class DList {
    *  Performance:  runs in O(1) time.
    */
   public void insertBack(Object item) {
-    head.prev = newNode(item, head.prev, head);
-    size ++;
+   head.prev = newNode(item, head.prev, head);
+   head.prev.prev.next = head.prev;
+   size++;
   }
 
   /**
@@ -116,11 +120,12 @@ public class DList {
    *  @return the node at the front of this DList.
    *  Performance:  runs in O(1) time.
    */
-  public Object front() {
-    if (head.next!=null)
-    return head.next.item;
-    else;
-    return null;
+  public DListNode front() {
+    DListNode node;
+    if (isEmpty())return null;
+    else;{
+      node = newNode(head.item, head, head.next.next);
+    return node;}
   }
 
   /**
@@ -132,9 +137,11 @@ public class DList {
    *  @return the node at the back of this DList.
    *  Performance:  runs in O(1) time.
    */
-  public Object back() {
-    if (head.prev !=null)
-    return head.prev.item;
+  public DListNode back() {
+    if (!isEmpty()) {
+     return head.prev;
+    }
+
     else;
     return null;
   }
@@ -149,11 +156,11 @@ public class DList {
    *  @return the node following "node".
    *  Performance:  runs in O(1) time.
    */
-  public Object next(DListNode node) {
+  public DListNode next(DListNode node) {
     if (node.next == head) {
       return null;
     } else
-      return node.next.item;
+      return node.next;
   }
 
   /**
@@ -180,11 +187,11 @@ public class DList {
    *  Performance:  runs in O(1) time.
    */
   public void insertAfter(Object item, DListNode node) {
-    if(node.next!=head)
-    node.next = newNode(item, node, node.next.next);
-    if (node.next==head)
-      head.prev = newNode(item, node, head);
-    size=+1;
+    if(node.next!=head){
+    node.next = newNode(item, node, node.next.next);}
+    else {
+      head.prev = newNode(item, node, head);}
+    size++;
   }
 
   /**
@@ -195,12 +202,12 @@ public class DList {
    *  Performance:  runs in O(1) time.
    */
   public void insertBefore(Object item, DListNode node) {
-    if(node.prev !=head)
+    if(node.prev !=head){
       node.prev.next= node.next;
-      node.next.prev = node.prev;
-    if (node.prev == head)
-      head.next = newNode(item, head, node);
-    size=+1;
+      node.next.prev = node.prev;}
+    else if (node.prev == head){
+      head.next = newNode(item, head, node);}
+    size++;
   }
 
   /**
@@ -213,18 +220,7 @@ public class DList {
     size--;
   }
 
-  public static void main (String [] args) {
-    DList l1 = new DList(2);
-    System.out.println(l1.front());
-    System.out.println(l1.length());
-    System.out.println(l1.isEmpty());
-    l1.insertFront(1);
-    System.out.println(l1.front());
-    System.out.println(l1.length());
-    l1.insertBack(5);
-    System.out.println(l1.back());
-    System.out.println(l1.length());
-  }
+
 
   /**
    *  toString() returns a String representation of this DList.
@@ -243,4 +239,5 @@ public class DList {
     }
     return result + "]";
   }
+
 }
