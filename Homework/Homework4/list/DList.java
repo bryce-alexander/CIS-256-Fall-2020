@@ -52,7 +52,9 @@ public class DList {
    */
   public DList() {
     //  Your solution here.
-    head = newNode(null, head, head);
+    head = newNode(null, null, null);
+    head.next = head;
+    head.prev = head;
     size = 0;
   }
 
@@ -176,6 +178,7 @@ public class DList {
     // Your solution here.
     if (node==null) { return; }
     list.DListNode insertNode = newNode(item, node, node.next);
+    node.next.prev = insertNode;
     node.next = insertNode;
     size++;
 
@@ -192,6 +195,7 @@ public class DList {
     // Your solution here.
     if (node==null) { return; }
     list.DListNode insertNode = newNode(item, node.prev, node);
+    node.prev.next = insertNode;
     node.prev = insertNode;
     size++;
   }
@@ -219,6 +223,7 @@ public class DList {
   public String toString() {
     String result = "[  ";
     list.DListNode current = head.next;
+    System.out.println(head.next==head);
     while (current != head) {
       result = result + current.item + "  ";
       current = current.next;
@@ -229,5 +234,81 @@ public class DList {
   public static void main(String[] args){
 
     DList testList = new DList();
+
+    System.out.println("Initialize new DList. [ ]  New list is: " + testList.toString());
+    System.out.println("Size (should be 0): " + testList.length());
+    System.out.println("Is empty? (should be true): " + testList.isEmpty());
+    System.out.println("Sentinel prev (should be null): " + testList.prev(testList.head));
+    System.out.println("Sentinel next (should be null): " + testList.next(testList.head));
+    System.out.println("Sentinel points to self in both directions? " + (testList.head.next==testList.head && testList.head.prev==testList.head));
+
+    testList.insertFront(1);
+    System.out.println("\nInsert front '1'. [ 1 ]  New list is: " + testList.toString());
+    System.out.println("Size (should be 1): " + testList.length());
+    System.out.println("Is empty? (should be false): " + testList.isEmpty());
+    System.out.println("Front (should be 1): " + testList.front().item);
+    System.out.println("Back (should be 1): " + testList.back().item);
+    System.out.println("1 prev (should be null): " + testList.prev(testList.head.next));
+    System.out.println("1 next (should be null): " + testList.next(testList.head.next));
+
+    testList.insertBack(3);
+    System.out.println("\nInsert back '3'. [ 1  3 ]  New list is: " + testList.toString());
+    System.out.println("Size (should be 2): " + testList.length());
+    System.out.println("Is empty? (should be false): " + testList.isEmpty());
+    System.out.println("Front (should be 1): " + testList.front().item);
+    System.out.println("Back (should be 3): " + testList.back().item);
+    System.out.println("3 prev (should be 1): " + testList.prev(testList.head.next.next).item);
+    System.out.println("1 next (should be 3): " + testList.next(testList.head.next).item);
+    System.out.println("3 next (should be null): " + testList.next(testList.head.next.next));
+    System.out.println("1 prev (should be null): " + testList.prev(testList.head.next));
+
+    testList.insertAfter(2, testList.head.next);
+    System.out.println("\nInsert 2 after 1. [ 1  2  3 ]  New list is: " + testList.toString());
+    System.out.println("Size (should be 3): " + testList.length());
+    System.out.println("Is empty? (should be false): " + testList.isEmpty());
+    System.out.println("Front (should be 1): " + testList.front().item);
+    System.out.println("Back (should be 3): " + testList.back().item);
+    System.out.println("3 prev (should be 2): " + testList.prev(testList.head.prev).item);
+    System.out.println("1 next (should be 2): " + testList.next(testList.head.next).item);
+    System.out.println("3 next (should be null): " + testList.next(testList.head.prev));
+    System.out.println("1 prev (should be null): " + testList.prev(testList.head.next));
+
+    testList.insertBefore(4, testList.back());
+    System.out.println("\nInsert 4 before 3. [ 1  2  4  3 ]  New list is: " + testList.toString());
+    System.out.println("Size (should be 4): " + testList.length());
+    System.out.println("Is empty? (should be false): " + testList.isEmpty());
+    System.out.println("Front (should be 1): " + testList.front().item);
+    System.out.println("Back (should be 3): " + testList.back().item);
+    System.out.println("3 prev (should be 4): " + testList.prev(testList.back()).item);
+    System.out.println("1 next (should be 2): " + testList.next(testList.front()).item);
+    System.out.println("4 next (should be 3): " + testList.next(testList.back().prev).item);
+    System.out.println("1 prev (should be null): " + testList.prev(testList.head.next));
+    System.out.println("Head prev (should be 3): " + testList.head.prev.item);
+
+    testList.remove(testList.front());
+    System.out.println("\nRemove 1. [ 2  4  3 ]  New list is: " + testList.toString());
+    System.out.println("Size (should be 3): " + testList.length());
+    System.out.println("Is empty? (should be false): " + testList.isEmpty());
+    System.out.println("Front (should be 2): " + testList.front().item);
+    System.out.println("Back (should be 3): " + testList.back().item);
+    System.out.println("3 prev (should be 4): " + testList.prev(testList.back()).item);
+    System.out.println("2 next (should be 4): " + testList.next(testList.front()).item);
+    System.out.println("3 next (should be null): " + testList.next(testList.back()));
+    System.out.println("2 prev (should be null): " + testList.prev(testList.front()));
+    System.out.println("Head next (should be 2): " + testList.head.next.item);
+
+    testList.remove(testList.back());
+    System.out.println("\nRemove 3. [ 2  4 ]  New list is: " + testList.toString());
+    System.out.println("Size (should be 2): " + testList.length());
+    System.out.println("Is empty? (should be false): " + testList.isEmpty());
+    System.out.println("Front (should be 2): " + testList.front().item);
+    System.out.println("Back (should be 4): " + testList.back().item);
+    System.out.println("4 prev (should be 2): " + testList.prev(testList.back()).item);
+    System.out.println("2 next (should be 4): " + testList.next(testList.front()).item);
+    System.out.println("4 next (should be null): " + testList.next(testList.back()));
+    System.out.println("2 prev (should be null): " + testList.prev(testList.front()));
+    System.out.println("Head prev (should be 4): " + testList.head.prev.item);
+
+
   }
 }
