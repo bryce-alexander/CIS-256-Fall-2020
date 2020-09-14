@@ -1,5 +1,5 @@
 package Homework;
-
+import list.DList;
 
 public class HW4_test extends list.DList {
 
@@ -18,6 +18,7 @@ public class HW4_test extends list.DList {
         System.out.println("Inserted null node at the end.  New list: " + testList.toString());
         System.out.println("Prev to first node is: " + testList.prev(testList.front()));
         System.out.println("Next to third node is: " + testList.next(testList.prev(testList.back())).item);
+
 
 
 

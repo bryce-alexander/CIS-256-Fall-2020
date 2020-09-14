@@ -15,9 +15,7 @@ public class LockDList extends list.DList {
     public void remove(list.DListNode node) {
         // Your solution here.
         if (node==null || ((list.LockDListNode) node).locked==true) { return; }
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-        size--;
+        super.remove(node);
     }
 
     public void lockNode(list.DListNode node) {
