@@ -1,15 +1,15 @@
-/* DListNode.java */
+package list;/* list.DListNode.java */
 
 /**
- *  A DListNode is a node in a DList (doubly-linked list).
+ *  A list.DListNode is a node in a list.DList (doubly-linked list).
  */
 
 public class DListNode {
 
   /**
    *  item references the item stored in the current node.
-   *  prev references the previous node in the DList.
-   *  next references the next node in the DList.
+   *  prev references the previous node in the list.DList.
+   *  next references the next node in the list.DList.
    *
    *  DO NOT CHANGE THE FOLLOWING FIELD DECLARATIONS.
    */
@@ -19,7 +19,7 @@ public class DListNode {
   protected DListNode next;
 
   /**
-   *  DListNode() constructor.
+   *  list.DListNode() constructor.
    *  @param i the item to store in the node.
    *  @param p the node previous to this node.
    *  @param n the node following this node.

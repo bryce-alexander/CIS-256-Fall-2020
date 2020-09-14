@@ -1,0 +1,17 @@
+package list;
+
+public class LockDListNode extends list.DListNode{
+    protected boolean locked;
+
+    /**
+     * list.DListNode() constructor.
+     *
+     * @param i the item to store in the node.
+     * @param p the node previous to this node.
+     * @param n the node following this node.
+     */
+    LockDListNode(Object i, DListNode p, DListNode n) {
+        super(i, p, n);
+        this.locked = false;
+    }
+}
