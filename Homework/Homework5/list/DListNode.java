@@ -6,7 +6,7 @@ package list;
  *  A DListNode is a mutable node in a DList (doubly-linked list).
  **/
 
-public class DListNode extends ListNode {
+public class DListNode extends list.ListNode {
 
   /**
    *  (inherited)  item references the item stored in the current node.
@@ -27,7 +27,7 @@ public class DListNode extends ListNode {
    *  @param p the node previous to this node.
    *  @param n the node following this node.
    */
-  DListNode(Object i, DList l, DListNode p, DListNode n) {
+  DListNode(Object i, list.DList l, DListNode p, DListNode n) {
     item = i;
     myList = l;
     prev = p;
@@ -57,9 +57,9 @@ public class DListNode extends ListNode {
    *
    *  Performance:  runs in O(1) time.
    */
-  public ListNode next() throws InvalidNodeException {
+  public list.ListNode next() throws list.InvalidNodeException {
     if (!isValidNode()) {
-      throw new InvalidNodeException("next() called on invalid node");
+      throw new list.InvalidNodeException("next() called on invalid node");
     }
     return next;
   }
@@ -73,9 +73,9 @@ public class DListNode extends ListNode {
    *
    *  Performance:  runs in O(1) time.
    */
-  public ListNode prev() throws InvalidNodeException {
+  public list.ListNode prev() throws list.InvalidNodeException {
     if (!isValidNode()) {
-      throw new InvalidNodeException("prev() called on invalid node");
+      throw new list.InvalidNodeException("prev() called on invalid node");
     }
     return prev;
   }
@@ -89,9 +89,14 @@ public class DListNode extends ListNode {
    *
    *  Performance:  runs in O(1) time.
    */
-  public void insertAfter(Object item) throws InvalidNodeException {
+  public void insertAfter(Object item) throws list.InvalidNodeException {
     if (!isValidNode()) {
-      throw new InvalidNodeException("insertAfter() called on invalid node");
+      throw new list.InvalidNodeException("insertAfter() called on invalid node");
+    } else {
+      list.DListNode insertNode = ((list.DList)myList).newNode(item, ((list.DList)myList), this, this.next);
+      this.next.prev = insertNode;
+      this.next = insertNode;
+      this.myList.size++;
     }
     // Your solution here.  Will look something like your Homework 4 solution,
     //   but changes are necessary.  For instance, there is no need to check if
@@ -109,9 +114,14 @@ public class DListNode extends ListNode {
    *
    *  Performance:  runs in O(1) time.
    */
-  public void insertBefore(Object item) throws InvalidNodeException {
+  public void insertBefore(Object item) throws list.InvalidNodeException {
     if (!isValidNode()) {
-      throw new InvalidNodeException("insertBefore() called on invalid node");
+      throw new list.InvalidNodeException("insertBefore() called on invalid node");
+    } else {
+      list.DListNode insertNode = ((list.DList)myList).newNode(item, ((list.DList)myList), this.prev, this);
+      this.prev.next = insertNode;
+      this.prev = insertNode;
+      myList.size++;
     }
     // Your solution here.  Will look something like your Homework 4 solution,
     //   but changes are necessary.  For instance, there is no need to check if
@@ -128,9 +138,13 @@ public class DListNode extends ListNode {
    *
    *  Performance:  runs in O(1) time.
    */
-  public void remove() throws InvalidNodeException {
+  public void remove() throws list.InvalidNodeException {
     if (!isValidNode()) {
-      throw new InvalidNodeException("remove() called on invalid node");
+      throw new list.InvalidNodeException("remove() called on invalid node");
+    } else {
+      this.prev.next = this.next;
+      this.next.prev = this.prev;
+      myList.size--;
     }
     // Your solution here.  Will look something like your Homework 4 solution,
     //   but changes are necessary.  For instance, there is no need to check if

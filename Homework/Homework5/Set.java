@@ -8,6 +8,7 @@ import list.*;
  **/
 public class Set {
   /* Fill in the data fields here. */
+  protected List setList;
 
   /**
    * Set ADT invariants:
@@ -24,6 +25,7 @@ public class Set {
    **/
   public Set() { 
     // Your solution here.
+    setList = new DList();
   }
 
   /**
@@ -33,7 +35,7 @@ public class Set {
    **/
   public int cardinality() {
     // Replace the following line with your solution.
-    return 0;
+    return setList.length();
   }
 
   /**
@@ -46,7 +48,25 @@ public class Set {
    **/
   public void insert(Comparable c) {
     // Your solution here.
+    try {
+      if (cardinality() == 0) { setList.insertFront(c); }
+      else {
+        ListNode current = setList.back();
+        if (c.compareTo(current.item()) == 0) {
+          return;
+        } else if ((c.compareTo(current.item()) > 0)){
+          current.insertAfter(c);
+        } else if (c.compareTo(current.item()) < 0 && current==setList.front() ) {
+          current.insertBefore(c);
+        } else {
+          current = current.prev();
+        }
+      }
+    } catch (Exception e) {
+      System.out.println("Something has gone terribly wrong 1");
+    }
   }
+
 
   /**
    *  union() modifies this Set so that it contains all the elements it
@@ -65,6 +85,22 @@ public class Set {
    **/
   public void union(Set s) {
     // Your solution here.
+    try {
+      if (setList.isEmpty()) {
+        setList = s.setList;
+      } else if (s.setList.isEmpty()) {
+        return;
+      } else {
+        ListNode current = s.setList.front();
+        while (current!=s.setList.back()) {
+          insert((Comparable) current.item());
+          current = current.next();
+        } insert((Comparable) current.item());
+      }
+    }
+    catch (Exception e) {
+      System.out.println("Something has gone terribly wrong 2.");
+    }
   }
 
   /**
@@ -82,6 +118,35 @@ public class Set {
    **/
   public void intersect(Set s) {
     // Your solution here.
+    try {
+    if (setList.isEmpty()) { return; }
+    else if (s.setList.isEmpty()) { this.setList = s.setList; }
+    else {
+      ListNode currentThis = setList.front();
+      ListNode currentThat = s.setList.front();
+      while (currentThis != setList.back()) {
+        if (((Comparable) currentThis.item()).compareTo(currentThat.item()) < 0) {
+          currentThis = currentThis.next();
+          currentThis.prev().remove();
+        } else {
+          currentThat = currentThat.next();
+          currentThis = currentThis.next();
+        }
+      }
+      if (((Comparable)currentThis.item()).compareTo(currentThat.item()) < 0) {
+        currentThis = currentThis.next();
+        currentThis.prev().remove();
+      } else {
+        currentThat = currentThat.next();
+        currentThis = currentThis.next();
+      }
+    }
+    }
+    catch (Exception e) {
+      System.out.print("WHAT HAPPENED");
+    }
+
+
   }
 
   /**
@@ -101,10 +166,24 @@ public class Set {
    **/
   public String toString() {
     // Replace the following line with your solution.
-    return "";
+    String result = "{  ";
+    list.ListNode current = setList.front();
+    try {
+      while (current != setList.back()) {
+        result = result + current.item() + "  ";
+        current = current.next();
+        if (current == setList.back()) {
+          result = result + current.item() + "  ";
+        }
+      }
+    }
+    catch (Exception e) {
+      System.out.println("Wow this are really annoying");
+    }
+    return result + "}";
   }
 
-  public static void main(String[] argv) {
+  public static void main(String[] argv) throws InvalidNodeException {
     Set s = new Set();
     s.insert(new Integer(3));
     s.insert(new Integer(4));
@@ -131,5 +210,7 @@ public class Set {
 
     System.out.println("s.cardinality() = " + s.cardinality());
     // You may want to add more (ungraded) test code here.
+    System.out.println("s2.cardinality() = " + s2.cardinality());
+    System.out.println("s3.cardinality() = " + s3.cardinality());
   }
 }

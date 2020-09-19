@@ -96,10 +96,7 @@ public class DList {
    */
   public void insertBack(Object item) {
     // Your solution here.
-    list.DListNode insertNode = newNode(item, head.prev, head);
-    head.prev.next = insertNode;
-    head.prev = insertNode;
-    size++;
+
   }
 
   /**
@@ -204,9 +201,9 @@ public class DList {
   public void remove(list.DListNode node) {
     // Your solution here.
     if (node==null) { return; }
-    node.prev.next = node.next;
-    node.next.prev = node.prev;
-    size--;
+      node.prev.next = node.next;
+      node.next.prev = node.prev;
+      size--;
   }
 
   /**

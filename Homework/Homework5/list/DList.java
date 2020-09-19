@@ -20,7 +20,7 @@ public class DList extends List {
    *  DO NOT CHANGE THE FOLLOWING FIELD DECLARATION.
    **/
 
-  protected DListNode head;
+  protected list.DListNode head;
 
   /* DList invariants:
    *  1)  head != null.
@@ -48,9 +48,9 @@ public class DList extends List {
    *  @param prev the node previous to this node.
    *  @param next the node following this node.
    **/
-  protected DListNode newNode(Object item, DList list,
-                              DListNode prev, DListNode next) {
-    return new DListNode(item, list, prev, next);
+  protected list.DListNode newNode(Object item, DList list,
+                                   list.DListNode prev, list.DListNode next) {
+    return new list.DListNode(item, list, prev, next);
   }
 
   /**
@@ -59,6 +59,10 @@ public class DList extends List {
   public DList() {
     // Your solution here.  Similar to Homework 4, but now you need to specify
     //   the `list' field (second parameter) as well.
+    head = newNode(null, null,null, null);
+    head.next = head;
+    head.prev = head;
+    size = 0;
   }
 
   /**
@@ -71,6 +75,10 @@ public class DList extends List {
   public void insertFront(Object item) {
     // Your solution here.  Similar to Homework 4, but now you need to specify
     //   the `list' field (second parameter) as well.
+    list.DListNode insertNode = newNode(item, this, head, head.next);
+    head.next.prev = insertNode;
+    head.next = insertNode;
+    size++;
   }
 
   /**
@@ -83,6 +91,10 @@ public class DList extends List {
   public void insertBack(Object item) {
     // Your solution here.  Similar to Homework 4, but now you need to specify
     //   the `list' field (second parameter) as well.
+    list.DListNode insertNode = newNode(item, this, head.prev, head);
+    head.prev.next = insertNode;
+    head.prev = insertNode;
+    size++;
   }
 
   /**
@@ -96,7 +108,7 @@ public class DList extends List {
    *
    *  Performance:  runs in O(1) time.
    */
-  public ListNode front() {
+  public list.ListNode front() {
     return head.next;
   }
 
@@ -111,7 +123,7 @@ public class DList extends List {
    *
    *  Performance:  runs in O(1) time.
    */
-  public ListNode back() {
+  public list.ListNode back() {
     return head.prev;
   }
 
@@ -126,7 +138,7 @@ public class DList extends List {
    */
   public String toString() {
     String result = "[  ";
-    DListNode current = head.next;
+    list.DListNode current = head.next;
     while (current != head) {
       result = result + current.item + "  ";
       current = current.next;
@@ -134,37 +146,37 @@ public class DList extends List {
     return result + "]";
   }
 
-  private static void testInvalidNode(ListNode p) {
+  private static void testInvalidNode(list.ListNode p) {
     System.out.println("p.isValidNode() should be false: " + p.isValidNode());
     try {
       p.item();
       System.out.println("p.item() should throw an exception, but didn't.");
-    } catch (InvalidNodeException lbe) {
+    } catch (list.InvalidNodeException lbe) {
       System.out.println("p.item() should throw an exception, and did.");
     }
     try {
       p.setItem(new Integer(0));
       System.out.println("p.setItem() should throw an exception, but didn't.");
-    } catch (InvalidNodeException lbe) {
+    } catch (list.InvalidNodeException lbe) {
       System.out.println("p.setItem() should throw an exception, and did.");
     }
     try {
       p.next();
       System.out.println("p.next() should throw an exception, but didn't.");
-    } catch (InvalidNodeException lbe) {
+    } catch (list.InvalidNodeException lbe) {
       System.out.println("p.next() should throw an exception, and did.");
     }
     try {
       p.prev();
       System.out.println("p.prev() should throw an exception, but didn't.");
-    } catch (InvalidNodeException lbe) {
+    } catch (list.InvalidNodeException lbe) {
       System.out.println("p.prev() should throw an exception, and did.");
     }
     try {
       p.insertBefore(new Integer(1));
       System.out.println("p.insertBefore() should throw an exception, but " +
                          "didn't.");
-    } catch (InvalidNodeException lbe) {
+    } catch (list.InvalidNodeException lbe) {
       System.out.println("p.insertBefore() should throw an exception, and did."
                          );
     }
@@ -172,14 +184,14 @@ public class DList extends List {
       p.insertAfter(new Integer(1));
       System.out.println("p.insertAfter() should throw an exception, but " +
                          "didn't.");
-    } catch (InvalidNodeException lbe) {
+    } catch (list.InvalidNodeException lbe) {
       System.out.println("p.insertAfter() should throw an exception, and did."
                          );
     }
     try {
       p.remove();
       System.out.println("p.remove() should throw an exception, but didn't.");
-    } catch (InvalidNodeException lbe) {
+    } catch (list.InvalidNodeException lbe) {
       System.out.println("p.remove() should throw an exception, and did.");
     }
   }
@@ -190,7 +202,7 @@ public class DList extends List {
     System.out.println("l.isEmpty() should be true: " + l.isEmpty());
     System.out.println("l.length() should be 0: " + l.length());
     System.out.println("Finding front node p of l.");
-    ListNode p = l.front();
+    list.ListNode p = l.front();
     testInvalidNode(p);
     System.out.println("Finding back node p of l.");
     p = l.back();
@@ -207,7 +219,7 @@ public class DList extends List {
     l.insertFront(new Integer(1));
     System.out.println("l is a list of 3 elements: " + l);
     try {
-      ListNode n;
+      list.ListNode n;
       int i = 1;
       for (n = l.front(); n.isValidNode(); n = n.next()) {
 	System.out.println("n.item() should be " + i + ": " + n.item());
@@ -244,7 +256,7 @@ public class DList extends List {
       n.remove();
       System.out.println("l is now: " + l);
       testInvalidNode(n);    
-    } catch (InvalidNodeException lbe) {
+    } catch (list.InvalidNodeException lbe) {
       System.err.println ("Caught InvalidNodeException that should not happen."
                           );
       System.err.println ("Aborting the testing code.");

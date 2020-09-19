@@ -4,7 +4,13 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/Homework/Homework1-2" />
       <excludeFolder url="file://$MODULE_DIR$/Homework/Homework3" />
+      <excludeFolder url="file://$MODULE_DIR$/Homework/Homework4" />
+      <excludeFolder url="file://$MODULE_DIR$/Homework/Homework4/list" />
+      <excludeFolder url="file://$MODULE_DIR$/Labs/Lab1" />
+      <excludeFolder url="file://$MODULE_DIR$/Labs/Lab2" />
+      <excludeFolder url="file://$MODULE_DIR$/Labs/Lab3" />
       <excludeFolder url="file://$MODULE_DIR$/Projects/Lab2" />
       <excludeFolder url="file://$MODULE_DIR$/Projects/Lab3" />
     </content>
