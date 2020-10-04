@@ -62,11 +62,6 @@ public class VirtualTeller {
     if (amount < 0) {
       throw new BadTransactionException(amount);
     }
-
-//    if (account == null) {
-//      System.out.println("Error:  Couldn't find account number `" +
-//                         acct + "'");
-//    } else {
       account.deposit(amount);
     }
 
@@ -79,12 +74,6 @@ public class VirtualTeller {
    */
   public int balanceInquiry(int acct) throws BadAccountException {
     AccountData account = findAccount(acct);
-
-    /*if (account == null) {
-      System.out.println("Error:  Couldn't find account number `" +
-                         acct + "'" );
-      return -1;
-    } else {*/
       return account.getBalance();
     }
 

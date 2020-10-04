@@ -63,7 +63,7 @@ public class Set {
         }
       }
     } catch (Exception e) {
-      System.out.println("Something has gone terribly wrong 1");
+      System.err.println(e);
     }
   }
 
@@ -92,14 +92,15 @@ public class Set {
         return;
       } else {
         ListNode current = s.setList.front();
-        while (current!=s.setList.back()) {
+          while (current != s.setList.back()) {
+            insert((Comparable) current.item());
+            current = current.next();
+          }
           insert((Comparable) current.item());
-          current = current.next();
-        } insert((Comparable) current.item());
+        }
       }
-    }
     catch (Exception e) {
-      System.out.println("Something has gone terribly wrong 2.");
+      System.err.println(e);
     }
   }
 
@@ -124,7 +125,7 @@ public class Set {
     else {
       ListNode currentThis = setList.front();
       ListNode currentThat = s.setList.front();
-      while (currentThis != setList.back()) {
+      for (int i=0; i<setList.length(); i++) {
         if (((Comparable) currentThis.item()).compareTo(currentThat.item()) < 0) {
           currentThis = currentThis.next();
           currentThis.prev().remove();
@@ -133,20 +134,11 @@ public class Set {
           currentThis = currentThis.next();
         }
       }
-      if (((Comparable)currentThis.item()).compareTo(currentThat.item()) < 0) {
-        currentThis = currentThis.next();
-        currentThis.prev().remove();
-      } else {
-        currentThat = currentThat.next();
-        currentThis = currentThis.next();
       }
     }
-    }
     catch (Exception e) {
-      System.out.print("WHAT HAPPENED");
+      System.err.print(e);
     }
-
-
   }
 
   /**
@@ -178,12 +170,12 @@ public class Set {
       }
     }
     catch (Exception e) {
-      System.out.println("Wow this are really annoying");
+      System.err.print(e);
     }
     return result + "}";
   }
 
-  public static void main(String[] argv) throws InvalidNodeException {
+  public static void main(String[] argv) {
     Set s = new Set();
     s.insert(new Integer(3));
     s.insert(new Integer(4));
