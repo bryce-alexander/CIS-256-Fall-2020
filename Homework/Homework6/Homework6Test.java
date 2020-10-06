@@ -82,6 +82,22 @@ public class Homework6Test {
     System.out.println("Board 2 is copy of identical board?: " + board2.equals(board2Copy));
     System.out.println("Board 2 is copy of augmented board?: " + board2.equals(board2Diff));
 
+    dict.HashTableChained table1 = new dict.HashTableChained(3);
+    table1.insert(1, "board");
+    table1.insert(2, "board2");
+    table1.insert(3, "board2Diff");
+    Entry index1 = table1.find(1);
+    Entry index2 =table1.find(2);
+    Entry index3 =table1.find(3);
+    System.out.println(index1.value());
+    System.out.println(index2.value());
+    System.out.println(index3.value());
+    table1.remove(2);
+    System.out.println(table1.find(2)==null);
+
+
+
+
 
 
 

@@ -133,8 +133,12 @@ public class HashTableChained implements Dictionary {
 
   public Entry find(Object key) {
     // Replace the following line with your solution.
-    if (buckets[compFunction(key.hashCode())]!=null) { return (Entry)buckets[compFunction(key.hashCode())].getFirst(); }
-    else { return null; }
+    try {
+      if (buckets[compFunction(key.hashCode())] != null) {
+        return (Entry) buckets[compFunction(key.hashCode())].getFirst();
+      }
+    } catch (Exception e){ }
+    return null;
   }
 
   /** 
