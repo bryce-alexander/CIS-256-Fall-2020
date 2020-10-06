@@ -38,7 +38,11 @@ public class HashTableChained implements Dictionary {
     // Your solution here.
     size = 0;
     BigInteger estimate = new BigInteger(String.valueOf(sizeEstimate));
-    buckets = new LinkedList[estimate.nextProbablePrime().intValue()];
+    if (estimate.isProbablePrime(1)) {
+      buckets = new LinkedList[sizeEstimate];
+    } else {
+      buckets = new LinkedList[estimate.nextProbablePrime().intValue()];
+    }
   }
 
   /** 
@@ -62,7 +66,7 @@ public class HashTableChained implements Dictionary {
 
   int compFunction(int code) {
     // Replace the following line with your solution.
-    return ((2*code+14) % 999999937) % this.buckets.length;
+    return Math.abs(((2*code+14) % 999999937) % this.buckets.length);
   }
 
   /** 
@@ -129,7 +133,7 @@ public class HashTableChained implements Dictionary {
 
   public Entry find(Object key) {
     // Replace the following line with your solution.
-    if (buckets[compFunction(key.hashCode())]!=null) { return (Entry)buckets[index].getFirst(); }
+    if (buckets[compFunction(key.hashCode())]!=null) { return (Entry)buckets[compFunction(key.hashCode())].getFirst(); }
     else { return null; }
   }
 
@@ -160,6 +164,21 @@ public class HashTableChained implements Dictionary {
    */
   public void makeEmpty() {
     // Your solution here.
+    this.buckets = new LinkedList[buckets.length];
+    this.size = 0;
   }
 
+  /**
+   * Function to determine number of collisions
+   */
+
+  public int countCollisions() {
+    int numCollisions = 0;
+    for (int i=0; i<buckets.length; i++) {
+      if (buckets[i]!=null) {
+        numCollisions += buckets[i].size()-1;
+      } else { continue; }
+    }
+    return numCollisions;
+  }
 }

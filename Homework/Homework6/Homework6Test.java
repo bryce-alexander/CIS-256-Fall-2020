@@ -24,6 +24,16 @@ public class Homework6Test {
     return board;
   }
 
+  private static SimpleBoard nonRandomBoard() {
+    SimpleBoard board = new SimpleBoard();
+    for (int y = 0; y < 8; y++) {
+      for (int x = 0; x < 8; x++) {
+        board.setElementAt(x, y, 11);
+      }
+    }
+    return board;
+  }
+
   /**
    *  Empties the given table, then inserts "numBoards" boards into the table.
    *  @param table is the hash table to be initialized.
@@ -55,6 +65,27 @@ public class Homework6Test {
     }
     HashTableChained table = new HashTableChained(numBoards);
     initTable(table, numBoards);
+
+    System.out.println(table.countCollisions());
+
+    SimpleBoard board = randomBoard();
+    SimpleBoard boardCopy = board;
+    SimpleBoard boardDiff = randomBoard();
+
+    System.out.println("Board is copy of self?: " + board.equals(boardCopy));
+    System.out.println("Board is copy of random board?: " + board.equals(boardDiff));
+
+    SimpleBoard board2 = nonRandomBoard();
+    SimpleBoard board2Copy = nonRandomBoard();
+    SimpleBoard board2Diff = nonRandomBoard();
+    board2Diff.setElementAt(1,1,3);
+    System.out.println("Board 2 is copy of identical board?: " + board2.equals(board2Copy));
+    System.out.println("Board 2 is copy of augmented board?: " + board2.equals(board2Diff));
+
+
+
+
+
 
     // To test your hash function, add a method to your HashTableChained class
     // that counts the number of collisions--or better yet, also prints

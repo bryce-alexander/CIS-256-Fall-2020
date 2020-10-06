@@ -1,5 +1,9 @@
 /* SimpleBoard.java */
 
+import sun.java2d.pipe.SpanShapeRenderer;
+
+import java.math.BigInteger;
+
 /**
  *  Simple class that implements an 8x8 game board with three possible values
  *  for each cell:  0, 1 or 2.
@@ -66,7 +70,11 @@ public class SimpleBoard {
     // Replace the following line with your solution.  Be sure to return false
     //   (rather than throwing a ClassCastException) if "board" is not
     //   a SimpleBoard.
-    return false;
+    if (board instanceof SimpleBoard && this.hashCode() == board.hashCode()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**
@@ -76,7 +84,13 @@ public class SimpleBoard {
 
   public int hashCode() {
     // Replace the following line with your solution.
-    return 99;
+    String hashVal = "";
+    for (int i=0; i<this.DIMENSION; i++) {
+      for (int j=0; j<this.DIMENSION; j++) {
+        hashVal += Integer.toString(this.grid[i][j]);
+      }
+    }
+    return hashVal.hashCode();
   }
 
 }
