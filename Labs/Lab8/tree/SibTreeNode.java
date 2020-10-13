@@ -168,33 +168,27 @@ class SibTreeNode extends TreeNode {
    */
   public void removeLeaf() throws tree.InvalidNodeException {
     // FILL IN YOUR SOLUTION TO PART III HERE.
-    if (isValidNode()) {
-      if (this.children()!=0) { return; }
-      if (this == myTree.root) {
-        myTree.size--;
-        this.valid=false;
-        return;
+      if (!isValidNode()) {
+        throw new tree.InvalidNodeException();
       }
-      else {
-        SibTreeNode activeNode = this.parent.firstChild;
-        if (activeNode == this) {
-          if (this.nextSibling().isValidNode()) {
-            this.parent.firstChild = this.nextSibling;
+      if (children() == 0) {
+        if (this == myTree.root) {
+          myTree.root = null;
+        } else {
+          SibTreeNode parentNode = parent;
+          if (parentNode.firstChild == this) {
+            parentNode.firstChild = nextSibling;
           } else {
-            this.nextSibling = new SibTreeNode();
-            this.parent.firstChild = null;
+            SibTreeNode currentChild = parentNode.firstChild;
+            while (currentChild.nextSibling != this) {
+              currentChild = currentChild.nextSibling;
+            }
+            currentChild.nextSibling = nextSibling;
           }
         }
-        while (activeNode.nextSibling().isValidNode() && activeNode!=this) {
-          activeNode = activeNode.nextSibling;
-          activeNode.nextSibling = this.nextSibling;
-        }
-        activeNode.nextSibling = this.nextSibling;
-        this.valid = false;
+        valid = false;
         myTree.size--;
       }
-    }
-    else { throw new tree.InvalidNodeException(); }
     }
 
 }
