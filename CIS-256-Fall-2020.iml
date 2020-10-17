@@ -14,6 +14,8 @@
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab2" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab3" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab5" />
+      <excludeFolder url="file://$MODULE_DIR$/Labs/Lab8" />
+      <excludeFolder url="file://$MODULE_DIR$/Labs/Lab8/tree" />
       <excludeFolder url="file://$MODULE_DIR$/Projects/Lab2" />
       <excludeFolder url="file://$MODULE_DIR$/Projects/Lab3" />
     </content>
