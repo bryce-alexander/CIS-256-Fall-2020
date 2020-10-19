@@ -66,7 +66,9 @@ public class SimpleBoard {
   public boolean equals(Object board) {
     if(board instanceof SimpleBoard && code==board.hashCode())
       return true;
-    else return false;
+    else{
+      return false;
+    }
   }
 
   /**
@@ -78,7 +80,7 @@ public class SimpleBoard {
     int code = 0;
     for (int i=0; i<DIMENSION; i++){
       for (int j=0; j< DIMENSION; j++){
-        code += 31+grid[i][j];
+        code += 31+ grid[i][j];
       }
     }
     return code;

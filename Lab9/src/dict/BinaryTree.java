@@ -161,32 +161,41 @@ public class BinaryTree implements Dictionary {
     if (remNode == null) {
       return null;
     }
+    //Node has no children root is always checked first.
     if (remNode.leftChild == null && remNode.rightChild == null) {
       if (remNode == root) {
         root = null;
         size--;
         return remNode.entry;
-      } else if (remNode.parent.leftChild == remNode) {
+      }
+      //Node is left child of parent.
+      if (remNode.parent.leftChild == remNode) {
         remNode.parent.leftChild = null;
         size--;
         return remNode.entry;
-      } else if (remNode.parent.rightChild == remNode) {
+      }
+      //Node is right child of parent.
+      if (remNode.parent.rightChild == remNode) {
         remNode.parent.rightChild = null;
         size--;
         return remNode.entry;
       }
     }
+    //Node has a left child.
     if (remNode.leftChild != null && remNode.rightChild == null) {
+     //Node is the root.
       if (remNode == root) {
         root = remNode.leftChild;
         size--;
         return remNode.entry;
       }
+      //node is the left child.
        if (remNode.parent.leftChild == remNode) {
         remNode.parent.leftChild = remNode.leftChild;
         size--;
         return remNode.entry;
       }
+       //node is right child.
        if (remNode.parent.rightChild == remNode) {
         remNode.parent.rightChild = remNode.leftChild;
         size--;
@@ -194,27 +203,31 @@ public class BinaryTree implements Dictionary {
       }
 
     }
-
+    // Node has a right child only.
     if (remNode.rightChild != null && remNode.leftChild == null) {
+      // Node is the root
       if (remNode == root) {
         root = remNode.rightChild;
         size--;
         return remNode.entry;
-
-      } else if (remNode.parent.leftChild == remNode) {
+      }
+      //Node is the left child.
+      if (remNode.parent.leftChild == remNode) {
         remNode.parent.leftChild = remNode.rightChild;
         size--;
         return remNode.entry;
-
-      } else if (remNode.parent.rightChild == remNode) {
+      }
+      //Node is the right child.
+      if (remNode.parent.rightChild == remNode) {
         remNode.parent.rightChild = remNode.rightChild;
         size--;
         return remNode.entry;
       }
     }
-
+    //Node has two children or more.
     if (remNode.leftChild != null && remNode.rightChild != null) {
       BinaryTreeNode holdNode;
+      //Finds the min Node in the right side of the Node to be removed
       if (remNode.rightChild.leftChild != null){
         holdNode = new BinaryTreeNode(remNode.rightChild.leftChild.entry);
         while (holdNode.leftChild != null) {
@@ -223,6 +236,7 @@ public class BinaryTree implements Dictionary {
         }
       }
       else holdNode = new BinaryTreeNode(remNode.rightChild.entry);
+      //Node is the root.
       if (remNode == root) {
           remove(holdNode.entry.key);
           holdNode.rightChild = remNode.rightChild;
@@ -230,6 +244,7 @@ public class BinaryTree implements Dictionary {
           root=holdNode;
           return remNode.entry;
         }
+      //Node is the left child.
       if (remNode.parent.leftChild == remNode) {
           remove(holdNode.entry.key);
           holdNode.rightChild = remNode.rightChild.rightChild;
@@ -237,6 +252,7 @@ public class BinaryTree implements Dictionary {
           remNode.parent.leftChild = holdNode;
           return remNode.entry;
         }
+      //Node is the right child.
       else {
           remove(holdNode.entry.key);
           holdNode.leftChild=remNode.leftChild;

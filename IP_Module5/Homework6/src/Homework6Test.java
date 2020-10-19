@@ -1,6 +1,6 @@
 /* Homework6Test.java */
 
-import dict.*;
+import dict.HashTableChained;
 
 /**
  *  Initializes a hash table, then stocks it with random SimpleBoards.
@@ -67,21 +67,27 @@ public class Homework6Test {
     initTable(table, numBoards);
 
     System.out.println(table.collisionCount());
+    System.out.println(table.size());
 
-    SimpleBoard board = randomBoard();
-    SimpleBoard boardCopy = board;
-    SimpleBoard boardDiff = randomBoard();
-
-    System.out.println("Board is copy of self?: " + board.equals(boardCopy));
-    System.out.println("Board is copy of random board?: " + board.equals(boardDiff));
-
-    SimpleBoard board2 = nonRandomBoard();
-    SimpleBoard board2Copy = nonRandomBoard();
-    SimpleBoard board2Diff = nonRandomBoard();
-    board2Diff.setElementAt(1,1,3);
-    System.out.println("Board 2 is copy of identical board?: " + board2.equals(board2Copy));
-    System.out.println("Board 2 is copy of augmented board?: " + board2.equals(board2Diff));
-
+//    SimpleBoard board = randomBoard();
+//    SimpleBoard boardCopy = board;
+//    SimpleBoard boardDiff = randomBoard();
+//
+//    System.out.println("Board is copy of self?: " + board.equals(boardCopy));
+//    System.out.println("Board is copy of random board?: " + board.equals(boardDiff));
+//
+//    SimpleBoard board2 = nonRandomBoard();
+//    SimpleBoard board2Copy = nonRandomBoard();
+//    SimpleBoard board2Diff = nonRandomBoard();
+//    board2Diff.setElementAt(1,1,3);
+//    System.out.println("Board 2 is copy of identical board?: " + board2.equals(board2Copy));
+//    System.out.println("Board 2 is copy of augmented board?: " + board2.equals(board2Diff));
+////    System.out.println(table.insert(1, 3));
+////    System.out.println(table.find(1));
+////    System.out.println(table.size());
+////    System.out.println(table.remove(1));
+////    System.out.println(table.size());
+////    System.out.println(table.find(1));
     // To test your hash function, add a method to your HashTableChained class
     // that counts the number of collisions--or better yet, also prints
     // a histograph of the number of entries in each bucket.  Call this method

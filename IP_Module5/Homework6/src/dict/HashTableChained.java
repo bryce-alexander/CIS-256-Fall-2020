@@ -2,6 +2,7 @@
 
 package dict;
 
+import java.math.BigInteger;
 import java.util.LinkedList;
 
 
@@ -35,8 +36,17 @@ public class HashTableChained implements Dictionary {
 //    while (!isPrime(sizeEstimate)){
 //      sizeEstimate+=1;
 //    }
-      N = sizeEstimate;
-      hashTable = new LinkedList[N];
+//      N = sizeEstimate;
+//      hashTable = new LinkedList[N];
+    BigInteger estimate = new BigInteger(String.valueOf(sizeEstimate));
+    if (estimate.isProbablePrime(1)) {
+      hashTable = new LinkedList[sizeEstimate];
+      N=sizeEstimate;
+    } else {
+      hashTable = new LinkedList[estimate.nextProbablePrime().intValue()];
+      N=estimate.nextProbablePrime().intValue();
+    }
+
     }
 
 
@@ -60,7 +70,7 @@ public class HashTableChained implements Dictionary {
    **/
 
   protected int compFunction(int code) {
-    return (((code+65)% 121439)%N) ;
+    return Math.abs(((code+65)% 121439)%N) ;
   }
 
   /**
@@ -106,7 +116,7 @@ public class HashTableChained implements Dictionary {
     Entry add = new Entry();
     add.key = key;
     add.value = value;
-    if (find(key).equals(null)) {
+    if (find(key)==null) {
      hashTable[i] = new LinkedList();
     }
     hashTable[i].add(add);
@@ -165,7 +175,7 @@ public class HashTableChained implements Dictionary {
    * Remove all entries from the dictionary.
    */
   public void makeEmpty() {
-    hashTable = new LinkedList[0];
+    hashTable = new LinkedList[N];
     n=0;
   }
 
@@ -184,7 +194,7 @@ public class HashTableChained implements Dictionary {
    int count =0;
    for (int i =0; i<N; i++){
      if (hashTable[i]!=null){
-    return count += hashTable[i].size()-1;
+     count += hashTable[i].size()-1;
    }else continue;
    }
    return count;

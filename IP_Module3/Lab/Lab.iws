@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9064c47a-490a-42b5-b751-b5dac38d910c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../HW4/list/src/LockDListNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HW4/list/src/LockDLists.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HW4/list/src/main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4/list/src/DList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4/list/src/DList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW4/list/src/LockDListNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW4/list/src/LockDLists.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW4/list/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4/list/src/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Lab.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Test/src/TestClass.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../testclass.java" beforeDir="false" />
@@ -34,7 +33,7 @@
       <recent name="C:\Users\ibhan\Documents\School\CS\CIS SUmmer\Welcome\Hw\CIS-256-Fall-2020\CIS-256-Fall-2020\IP_Module3\Lab\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DList2">
+  <component name="RunManager" selected="Application.DList1">
     <configuration name="DList1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DList1" />
       <module name="Lab" />
@@ -51,8 +50,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DList2" />
         <item itemvalue="Application.DList1" />
+        <item itemvalue="Application.DList2" />
       </list>
     </recent_temporary>
   </component>
@@ -79,28 +78,47 @@
       <option name="presentableId" value="Default" />
       <updated>1599708321818</updated>
     </task>
+    <task id="LOCAL-00001" summary="Close to complete">
+      <created>1599959065988</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1599959065988</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Close to complete">
+      <created>1599961127120</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1599961127120</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Close to complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Close to complete" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="728" y="312" key="CommitChangelistDialog2" timestamp="1599958962130">
+    <state x="728" y="312" key="CommitChangelistDialog2" timestamp="1599961126408">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="728" y="312" key="CommitChangelistDialog2/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1599958962130" />
-    <state width="2500" height="411" key="GridCell.Tab.0.bottom" timestamp="1599958736905">
+    <state x="728" y="312" key="CommitChangelistDialog2/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1599961126408" />
+    <state width="2500" height="411" key="GridCell.Tab.0.bottom" timestamp="1599961066877">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2500" height="411" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1599958736905" />
-    <state width="2500" height="411" key="GridCell.Tab.0.center" timestamp="1599958736905">
+    <state width="2500" height="411" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1599961066877" />
+    <state width="2500" height="411" key="GridCell.Tab.0.center" timestamp="1599961066877">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2500" height="411" key="GridCell.Tab.0.center/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1599958736905" />
-    <state width="2500" height="411" key="GridCell.Tab.0.left" timestamp="1599958736905">
+    <state width="2500" height="411" key="GridCell.Tab.0.center/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1599961066877" />
+    <state width="2500" height="411" key="GridCell.Tab.0.left" timestamp="1599961066877">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2500" height="411" key="GridCell.Tab.0.left/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1599958736905" />
-    <state width="2500" height="411" key="GridCell.Tab.0.right" timestamp="1599958736905">
+    <state width="2500" height="411" key="GridCell.Tab.0.left/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1599961066877" />
+    <state width="2500" height="411" key="GridCell.Tab.0.right" timestamp="1599961066877">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2500" height="411" key="GridCell.Tab.0.right/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1599958736905" />
+    <state width="2500" height="411" key="GridCell.Tab.0.right/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1599961066877" />
   </component>
 </project>
