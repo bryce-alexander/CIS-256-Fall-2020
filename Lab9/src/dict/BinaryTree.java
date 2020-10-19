@@ -161,6 +161,21 @@ public class BinaryTree implements Dictionary {
     if (remNode == null) {
       return null;
     }
+    if (remNode.leftChild == null && remNode.rightChild == null) {
+      if (remNode == root) {
+        root = null;
+        size--;
+        return remNode.entry;
+      } else if (remNode.parent.leftChild == remNode) {
+        remNode.parent.leftChild = null;
+        size--;
+        return remNode.entry;
+      } else if (remNode.parent.rightChild == remNode) {
+        remNode.parent.rightChild = null;
+        size--;
+        return remNode.entry;
+      }
+    }
     if (remNode.leftChild != null && remNode.rightChild == null) {
       if (remNode == root) {
         root = remNode.leftChild;
@@ -179,21 +194,7 @@ public class BinaryTree implements Dictionary {
       }
 
     }
-    if (remNode.leftChild == null && remNode.rightChild == null) {
-      if (remNode == root) {
-        root = null;
-        size--;
-        return remNode.entry;
-      } else if (remNode.parent.leftChild == remNode) {
-        remNode.parent.leftChild = null;
-        size--;
-        return remNode.entry;
-      } else if (remNode.parent.rightChild == remNode) {
-        remNode.parent.rightChild = null;
-        size--;
-        return remNode.entry;
-      }
-    }
+
     if (remNode.rightChild != null && remNode.leftChild == null) {
       if (remNode == root) {
         root = remNode.rightChild;
