@@ -116,7 +116,7 @@ public class Tree234 extends dict.IntDictionary {
    }
 
   /**
-   * insertHelper() lets you start the insert operation from the parent of a particular node rather than the root.
+   * insertHelper() lets you start the insert operation from a particular node rather than the root.
    * This is designed to allow for proper key placement without restructuring nodes above a recently restructured node
    * and a core purpose of this function is to prevent refactoring 3-nodes which have recently been created as insert()
    * moves through the tree.
@@ -258,13 +258,11 @@ public class Tree234 extends dict.IntDictionary {
     }
   }
 
-
-
   /**
    * whichChild() determines the appropriate child for continuation of the insert() method.
    * The primary purpose of this function is to ensure that, after refactoring a 3-node, the
-   * insert() algorithm can continue from where it left off rather than starting at the top
-   * of the tree.
+   * insert() algorithm can continue from the correct child of the newly created node rather
+   * than starting at the top of the tree.
    */
   private dict.Tree234Node whichChild(dict.Tree234Node node, int key) {
     if (key < node.parent.key1) {
