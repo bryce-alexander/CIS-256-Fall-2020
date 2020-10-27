@@ -136,7 +136,7 @@ public class Tree234 extends dict.IntDictionary {
         break;
       }
     }
-    // If current node is a 3-node, restructure current node and run insert function again.
+    // If current node is a 3-node, restructure current node and run insertHelper() function again.
     // If current node is NOT a 3-node, insert key into current node.
     if (currentNode.keys == 3) {
       // If current node is root, create new root with middle node.
