@@ -114,6 +114,9 @@ public class UDGraph
    */
   public UDGraph length2Paths() {
     UDGraph newGraph = new UDGraph(vertices);
+    /**Traverse through the graph finding vertices u such that there exist edges (v,u) and (w,u).
+     * If these edges in this graph exist then they are put into the newGraph as the edge (v,w).
+     */
     for (int v =0; v<vertices; v++){
       for (int u =0; u<vertices;u++){
         for (int w = 0; w<vertices; w++){
@@ -135,15 +138,17 @@ public class UDGraph
    */
   public UDGraph paths(int length) {
     UDGraph newGraph = new UDGraph(vertices);
+    //Base condition.
     if (length==2){
       newGraph= length2Paths();
     }
+    //Recursively traverses through the graph populating the new graph with edges with lengths < 2.
     else {
       for (int v =0; v<vertices; v++){
         for (int u =0; u<vertices;u++){
-          if (hasEdge(v,u))
+          if (paths(length-1).hasEdge(v,u))
           for (int w = 0; w<vertices; w++){
-            if (paths(length-1).hasEdge(u, w)){
+            if (hasEdge(u, w)){
                 newGraph.addEdge(v,w);
           }
         }
