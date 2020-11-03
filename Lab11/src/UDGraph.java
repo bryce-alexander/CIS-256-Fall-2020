@@ -144,9 +144,10 @@ public class UDGraph
     }
     //Recursively traverses through the graph populating the new graph with edges with lengths < 2.
     else {
+      UDGraph checkGraph = paths(length-1);
       for (int v =0; v<vertices; v++){
         for (int u =0; u<vertices;u++){
-          if (paths(length-1).hasEdge(v,u))
+          if (checkGraph.hasEdge(v,u))
           for (int w = 0; w<vertices; w++){
             if (hasEdge(u, w)){
                 newGraph.addEdge(v,w);
