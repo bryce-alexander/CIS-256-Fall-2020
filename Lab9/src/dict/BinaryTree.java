@@ -73,7 +73,6 @@ public class BinaryTree implements Dictionary {
     } else {
       insertHelper(entry, (Comparable) key, root);
     }
-
     size++;
     return entry;
   }

@@ -147,9 +147,8 @@ public class UDGraph
       UDGraph checkGraph = paths(length-1);
       for (int v =0; v<vertices; v++){
         for (int u =0; u<vertices;u++){
-          if (checkGraph.hasEdge(v,u))
           for (int w = 0; w<vertices; w++){
-            if (hasEdge(u, w)){
+            if (checkGraph.hasEdge(v,u)&&hasEdge(u, w)){
                 newGraph.addEdge(v,w);
           }
         }
