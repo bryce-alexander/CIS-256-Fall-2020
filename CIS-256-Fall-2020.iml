@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
@@ -13,11 +13,13 @@
       <excludeFolder url="file://$MODULE_DIR$/Homework/Homework7" />
       <excludeFolder url="file://$MODULE_DIR$/Homework/Homework7/dict" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab1" />
+      <excludeFolder url="file://$MODULE_DIR$/Labs/Lab11" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab2" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab3" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab5" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab8" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab8/tree" />
+      <excludeFolder url="file://$MODULE_DIR$/Labs/Lab9" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab9/dict" />
       <excludeFolder url="file://$MODULE_DIR$/Projects/Lab2" />
       <excludeFolder url="file://$MODULE_DIR$/Projects/Lab3" />

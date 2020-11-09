@@ -146,7 +146,7 @@ public class UDGraph
     // Put your answer to Part II here.
 
     // If length is zero, do nothing
-    if (length == 0) {
+    if (length == 0 ) {
 
       // If length is one, "this" graph and newGraph are the same
     } else if (length == 1) {
