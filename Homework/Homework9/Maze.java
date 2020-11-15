@@ -18,7 +18,7 @@ public class Maze {
   protected boolean[][] hWalls;
   protected boolean[][] vWalls;
 
-  // Object for generting random numbers.
+  // Object for generating random numbers.
   private static Random random;
 
   // Constants used in depth-first search (which checks for cycles in the
