@@ -6,7 +6,7 @@ import sun.awt.image.ImageWatched;
 
 public class ListSorts {
 
-  private final static int SORTSIZE = 10;
+  private final static int SORTSIZE = 10000;
 
   /**
    *  makeQueueOfQueues() makes a queue of queues, each containing one item
@@ -57,7 +57,7 @@ public class ListSorts {
       while (!q1.isEmpty() && !q2.isEmpty()) {
         Object item1 = q1.front();
         Object item2 = q2.front();
-        if (((Comparable) item1).compareTo(((Comparable) item2)) < 0) {
+        if (((Comparable) item1).compareTo(((Comparable) item2)) <= 0) {
           newQueue.enqueue(q1.dequeue());
         } else {
           newQueue.enqueue(q2.dequeue());
@@ -122,7 +122,6 @@ public class ListSorts {
           LinkedQueue item1 = (LinkedQueue) newQueue.dequeue();
           LinkedQueue item2 = (LinkedQueue) newQueue.dequeue();
           newQueue.enqueue(mergeSortedQueues(item1, item2));
-
         }
         q.append((LinkedQueue) newQueue.front());
       }

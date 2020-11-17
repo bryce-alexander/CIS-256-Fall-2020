@@ -17,12 +17,12 @@ Part IV.
   Is mergesort stable?  
   Why or why not?
 
-  My mergesort is not stable because, in mergeSortedQueues(), if a size-two queue with the same keys is compared,
-  the second key gets switched for the first.  (If index one is smaller, it will remain as index one, otherwise
-  index two will be placed in front of it).
+  My mergesort is stable because, in mergeSortedQueues(), if a size-two queue with the same keys is compared,
+  the first key remains in the first position.  Only if the first item is smaller will it be switched to the
+  end of the queue.
 
   Is quicksort stable?  
   Why or why not?
 
-  My quicksort is stable because it walks down the queue from the first key and adds equal values to the qEquals
-  queue in the order they are encountered.
+  My quicksort is not stable because, even though items are added in the order they are encountered during pivot(),
+  the randomly selected pivot value is not necessarily the first item that holds that value in the queue.
