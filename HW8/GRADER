@@ -1,0 +1,25 @@
+GRADER file for Homework 8
+
+Your Name:
+
+
+Part III.  Running time comparisons
+
+  List size         mergesort             quicksort
+      100 			1 msec.					0 msec.
+    1,000			3 msec.					2 msec.
+   10,000			13 msec.				13 msec.
+  100,000			117 msec.				92 msec.
+1,000,000			1658 msec.				693 msec.
+
+Part IV.
+
+  Is mergesort stable?
+  Why or why not?
+
+  mergesort is stable because the order of any equal elements is preserved.
+
+  Is quicksort stable?
+  Why or why not?
+
+  quicksort is not stable because the order of any equal element is not preserved.
