@@ -66,7 +66,7 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
 
   int compFunction(int code) {
     // Replace the following line with your solution.
-    return Math.abs(((2*code+14) % 999999937) % this.buckets.length);
+    return Math.abs(((2*code+140) % 999999937) % this.buckets.length);
   }
 
   /**
@@ -108,6 +108,7 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
 
   public Entry insert(Object key, Object value) {
     // Replace the following line with your solution.
+    checkResize();
     Entry newEntry = new Entry();
     newEntry.key = key;
     newEntry.value = value;
@@ -116,7 +117,6 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
     }
     buckets[compFunction(key.hashCode())].add((Entry)newEntry);
     this.size++;
-    checkResize();
     return newEntry;
   }
 
@@ -200,7 +200,7 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
     // If so, resize to new load factor of approx. 0.75
     double loadFactor = (double) size / (double) buckets.length;
     if (loadFactor >= 0.75 || loadFactor <= 0.8) {
-      int newSize = (int) (size * (1 + (1.0 / 3.0))) + 1;
+      int newSize = (int) (size * (1 + (1.0 / 3.0))) + 101;
       BigInteger estimate = new BigInteger(String.valueOf(newSize));
       if (!estimate.isProbablePrime(1)) {
         estimate = new BigInteger(String.valueOf(estimate.nextProbablePrime().intValue()));
@@ -233,62 +233,24 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
   }
 
   /**
-   * WRITE DESCRIPTION FOR GETKEYS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   * @return
-   */
-  public Object[] getKeys() {
-    Object[] keys = new Object[size];
-    int indexCounter = 0;
-    for (int i=0; i<buckets.length-1; i++) {
-      if (buckets[i]!=null && buckets[i].size()!=0) {
-        Entry entry = (Entry)buckets[i].get(0);
-        keys[indexCounter] = entry.key;
-        indexCounter++;
-      }
-    }
-    return keys;
-  }
-
-  /**
-   * WRITE DESCRIPTION FOR CHANGEVALUE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   */
-
-  /**
      * Test suite (REMOVE BEFORE SUBMISSION)
      */
 
     public static void main(String[] args) {
       HashTableChained test = new HashTableChained(100);
 
-      for (int i=0; i<80; i++){
+      for (int i = 0; i < 80; i++) {
         test.insert(i, i);
       }
-      System.out.println("OLD LOAD FACTOR: " + (double)test.size()/(double)test.buckets.length);
+      System.out.println("OLD LOAD FACTOR: " + (double) test.size() / (double) test.buckets.length);
       test.checkResize();
-      System.out.println("NEW LOAD FACTOR: " + (double)test.size()/(double)test.buckets.length);
+      System.out.println("NEW LOAD FACTOR: " + (double) test.size() / (double) test.buckets.length);
       test.remove(1);
-      System.out.println("NEW LOAD FACTOR (2): " + (double)test.size()/(double)test.buckets.length);
+      System.out.println("NEW LOAD FACTOR (2): " + (double) test.size() / (double) test.buckets.length);
 
       System.out.println("CREATING NEW HASHTABLE WITH SIZE 0...");
       HashTableChained test2 = new HashTableChained(0);
       System.out.println("NEW HASHTABLE SIZE: " + test2.buckets.length);
-
-      System.out.println("CHECKING GETKEYS FOR HASHTABLE WITH " + test.size + " ENTRIES: ");
-      Object[] array = test.getKeys();
-      String arrayString = "[";
-      for (int i = 0; i<array.length; i++) {
-        arrayString+=" " + i;
-      }
-      arrayString+= " ]";
-      System.out.println(arrayString);
-
     }
-
-
-// CONSIDER CHANGING RESIZE TO MAKE LOAD FACTOR HIGHER SO THERE ARE LESS ITERATIONS FOR GETVERTICES()
-
-
-
-
   }
 

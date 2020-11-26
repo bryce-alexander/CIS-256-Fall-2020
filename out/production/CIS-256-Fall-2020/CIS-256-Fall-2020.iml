@@ -29,8 +29,6 @@
       <excludeFolder url="file://$MODULE_DIR$/Projects/Lab2" />
       <excludeFolder url="file://$MODULE_DIR$/Projects/Lab3" />
       <excludeFolder url="file://$MODULE_DIR$/Term Project/Project 3" />
-      <excludeFolder url="file://$MODULE_DIR$/TermProject/dict" />
-      <excludeFolder url="file://$MODULE_DIR$/TermProject/graph" />
       <excludeFolder url="file://$MODULE_DIR$/TermProject/graphalg" />
       <excludeFolder url="file://$MODULE_DIR$/TermProject/set" />
     </content>

@@ -1,0 +1,14 @@
+IDEAS:
+
+Vertex:
+-Hashtable to represent vertex object
+  -> Hashtable key is object
+  -> Hashtable value DList representing the adjacencyList
+  -> Each node in adjacency list contains ITEM which is the VertexPair representing the edge
+  -> Edges in DList are represented by VertexPair objects
+
+Edges:
+-Hashtable to represent edge objects
+  -> Edge key is VertexPair
+  -> Edge value is weight
+  -> VertexPair contains references to the nodes in each vertex adjacency list
