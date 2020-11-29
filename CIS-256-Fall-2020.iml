@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/Homework" />
       <excludeFolder url="file://$MODULE_DIR$/Homework/Homework1-2" />
+      <excludeFolder url="file://$MODULE_DIR$/Homework/Homework10" />
       <excludeFolder url="file://$MODULE_DIR$/Homework/Homework3" />
       <excludeFolder url="file://$MODULE_DIR$/Homework/Homework4" />
       <excludeFolder url="file://$MODULE_DIR$/Homework/Homework4/list" />
@@ -19,6 +20,7 @@
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab1" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab10" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab11" />
+      <excludeFolder url="file://$MODULE_DIR$/Labs/Lab13" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab2" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab3" />
       <excludeFolder url="file://$MODULE_DIR$/Labs/Lab5" />
@@ -29,11 +31,12 @@
       <excludeFolder url="file://$MODULE_DIR$/Projects/Lab2" />
       <excludeFolder url="file://$MODULE_DIR$/Projects/Lab3" />
       <excludeFolder url="file://$MODULE_DIR$/Term Project/Project 3" />
-      <excludeFolder url="file://$MODULE_DIR$/TermProject/graphalg" />
-      <excludeFolder url="file://$MODULE_DIR$/TermProject/set" />
     </content>
+    <content url="file://$MODULE_DIR$/Homework/Homework10" />
     <content url="file://$MODULE_DIR$/Labs/Lab 11" />
+    <content url="file://$MODULE_DIR$/Labs/Lab13" />
     <content url="file://$MODULE_DIR$/Term Project/Project 3/graph" />
+    <content url="file://$MODULE_DIR$/out" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
