@@ -51,7 +51,7 @@ public class Sorts {
   /**
    *  radixSort() sorts an array of int keys (using all 32 bits
    *  of each key to determine the ordering).
-   *  @param key is an array of ints.  Assume no key is negative.
+   *  @param keys is an array of ints.  Assume no key is negative.
    *  @return an array of type int, having the same length as "keys"
    *    and containing the same keys in sorted order.
    *
@@ -69,7 +69,7 @@ public class Sorts {
   /**
    *  yell() prints an array of int keys.  Each key is printed in hexadecimal
    *  (base 16).
-   *  @param key is an array of ints.
+   *  @param keys is an array of ints.
    **/
   public static void yell(int[] keys) {
     System.out.print("keys are [ ");

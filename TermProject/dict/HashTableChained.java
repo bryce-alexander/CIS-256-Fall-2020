@@ -35,7 +35,6 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
    **/
 
   public HashTableChained(int sizeEstimate) {
-    // Your solution here.
     size = 0;
     BigInteger estimate = new BigInteger(String.valueOf(sizeEstimate));
     if (estimate.isProbablePrime(1)) {
@@ -51,7 +50,6 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
    **/
 
   public HashTableChained() {
-    // Your solution here.
     size = 0;
     buckets = new LinkedList[101];
   }
@@ -65,8 +63,7 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
    **/
 
   int compFunction(int code) {
-    // Replace the following line with your solution.
-    return Math.abs(((2*code+140) % 999999937) % this.buckets.length);
+    return Math.abs(((2*code+140321657) % 999999937) % this.buckets.length);
   }
 
   /**
@@ -77,7 +74,6 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
    **/
 
   public int size() {
-    // Replace the following line with your solution.
     return this.size;
   }
 
@@ -88,7 +84,6 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
    **/
 
   public boolean isEmpty() {
-    // Replace the following line with your solution.
     if (this.size==0) {return true;}
     else {return false;}
   }
@@ -133,7 +128,6 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
    **/
 
   public Entry find(Object key) {
-    // Replace the following line with your solution.
     try {
       if (buckets[compFunction(key.hashCode())] != null) {
         return (Entry) buckets[compFunction(key.hashCode())].getFirst();
@@ -156,7 +150,6 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
    */
 
   public Entry remove(Object key) {
-    // Replace the following line with your solution.
     if (find(key)==null) { return null; }
     else {
       size--;
@@ -190,42 +183,26 @@ public class HashTableChained extends Object implements TermProject.dict.Diction
 
   /**
    * checkResize() is a helper function which will calculate the current load factor and
-   * determine whether or not it is appropriate to resize the hash table.  For the purpose
-   * of this exercise, we will be operating with an ideal load factor of 0.75.  If it is
+   * determine whether or not it is appropriate to resize the hash table.  If it is
    * determined that the load factor is too high or too low, the hash table will be resized and rehashed.
    */
 
   protected void checkResize() {
-    // Compute the current load factor and determine whether or not it needs to be resized.
-    // If so, resize to new load factor of approx. 0.75
-    double loadFactor = (double) size / (double) buckets.length;
-    if (loadFactor >= 0.75 || loadFactor <= 0.8) {
-      int newSize = (int) (size * (1 + (1.0 / 3.0))) + 101;
+    double loadFactor = (double) size / (double) (buckets.length-2000);
+    if (loadFactor >= 0.8 || loadFactor <= 0.7) {
+      int newSize = (int) (size * (1 + (1.0 / 3.0))) + 2000;
       BigInteger estimate = new BigInteger(String.valueOf(newSize));
       if (!estimate.isProbablePrime(1)) {
         estimate = new BigInteger(String.valueOf(estimate.nextProbablePrime().intValue()));
       }
       LinkedList[] oldBuckets = buckets;
       buckets = new LinkedList[estimate.intValue()];
-//      System.out.println("SIZE: " + size);
-//      System.out.println("OLDBUCKETS LENGTH: " + oldBuckets.length + " NEWBUCKETS LENGTH: " + buckets.length);
-
-
-      // Iterate through current buckets and insert each into restructured hashtable
       for (int i = 0; i < oldBuckets.length; i++) {
-        /*        System.out.println("i=" + i);*/
         if (oldBuckets[i] != null) {
           for (int j = 0; j < oldBuckets[i].size(); j++) {
-//            System.out.println("i=" + i + " j=" + j + " oldbuckets[i] size: " + oldBuckets[i].size());
             Entry entry = (Entry) oldBuckets[i].get(j);
-//            insert(entry.key, entry.value);
-//            System.out.println("HASHCODE INDEX: " + compFunction(entry.key.hashCode()));
-//            if (find(entry.key)==null) {
-//              this.buckets[compFunction(entry.key.hashCode())] = new LinkedList();
-//            }
             buckets[compFunction(entry.key.hashCode())] = new LinkedList();
             buckets[compFunction(entry.key.hashCode())].add(entry);
-            /*            System.out.println("COMPLETE");*/
           }
         }
       }

@@ -5,8 +5,111 @@ Starting Array: 28  28  5  61  17  12  26  61  45  78  66  12  57
 
 Choose a pivot:
 [  28  28  5  61  17  12  26  61  45  78  66  12  57  ]
-       v
+low    v                                            high
 
-Choose a pivot:
-[  28  28  5  61  17  12  26  61  45  78  66  12  57  ]
-       v
+Swap and assign:
+[  28  57  5  61  17  12  26  61  45  78  66  12  28  ]
+   i                                               j
+
+Advance:
+[  28  57  5  61  17  12  26  61  45  78  66  12  28  ]
+   i                                           j
+
+Swap:
+[  12  57  5  61  17  12  26  61  45  78  66  28  28  ]
+   i                                           j
+
+Advance:
+[  12  57  5  61  17  12  26  61  45  78  66  28  28  ]
+       i                  j
+
+Swap:
+[  12  26  5  61  17  12  57  61  45  78  66  28  28  ]
+       i                  j
+
+Advance:
+[  12  26  5  61  17  12  57  61  45  78  66  28  28  ]
+               i      j
+
+Swap:
+[  12  26  5  12  17  61  57  61  45  78  66  28  28  ]
+               i      j
+
+Advance:
+[  12  26  5  12  17  61  57  61  45  78  66  28  28  ]
+                  j   i
+
+Pivot to i:
+[  12  26  5  12  17  |28|  57  61  45  78  66  28  61  ]
+
+Finding kth smallest key (k=3).  Checking index k-1:
+[  12  26  5  12  17  |28|  57  61  45  78  66  28  61  ]
+           k
+
+K != pivot.  K = new pivot:
+[  12  26  5  12  17  |28|  57  61  45  78  66  28  61  ]
+           v
+
+Swap and assign:
+[  12  26  17  12  5  |28|  57  61  45  78  66  28  61  ]
+   i               j
+
+Advance (no valid swap):
+[  12  26  17  12  5  |28|  57  61  45  78  66  28  61  ]
+   ij
+
+Pivot to i:
+[  |5|  26  17  12  12  |28|  57  61  45  78  66  28  61  ]
+
+Checking kth smallest key (k=3).  Checking index k-1:
+[  |5|  26  17  12  12  |28|  57  61  45  78  66  28  61  ]
+            k
+
+K != pivot.  K = new pivot:
+[  |5|  26  17  12  12  |28|  57  61  45  78  66  28  61  ]
+            v
+
+Swap and assign:
+[  |5|  26  12  12  17  |28|  57  61  45  78  66  28  61  ]
+        i       j
+
+No advance necessary; swap:
+[  |5|  12  12  26  17  |28|  57  61  45  78  66  28  61  ]
+        i       j
+
+Advance:
+[  |5|  12  12  26  17  |28|  57  61  45  78  66  28  61  ]
+            j   i
+
+Pivot to i:
+[  |5|  12  12  |17|  26  |28|  57  61  45  78  66  28  61  ]
+
+Checking kth smallest key (k=3).  Checking index k-1:
+[  |5|  12  12  |17|  26  |28|  57  61  45  78  66  28  61  ]
+            k
+
+K != pivot.  K = new pivot:
+[  |5|  12  12  |17|  26  |28|  57  61  45  78  66  28  61  ]
+            v
+
+Swap and assign:
+[  |5|  12  12  |17|  26  |28|  57  61  45  78  66  28  61  ]
+        i    j
+
+No advance necessary; swap:
+[  |5|  12  12  |17|  26  |28|  57  61  45  78  66  28  61  ]
+        i    j
+
+Pivot to i:
+[  |5|  12  |12|  |17|  26  |28|  57  61  45  78  66  28  61  ]
+             i
+
+Checking kth smallest key (k=3).  Checking index k-1:
+[  |5|  12  |12|  |17|  26  |28|  57  61  45  78  66  28  61  ]
+             k
+
+k==pivot.  3rd smallest item is 12.
+[  |5|  12  |12|  |17|  26  |28|  57  61  45  78  66  28  61  ]
+             k
+
+

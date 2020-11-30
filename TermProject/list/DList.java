@@ -93,14 +93,16 @@ public class DList {
   /**
    *  insertBack() inserts an item at the back of this DList.
    *  @param item is the item to be inserted.
+   *  @return the newly created node
    *  Performance:  runs in O(1) time.
    */
-  public void insertBack(Object item) {
+  public DListNode insertBack(Object item) {
     // Your solution here.
     TermProject.list.DListNode insertNode = newNode(item, head.prev, head);
     head.prev.next = insertNode;
     head.prev = insertNode;
     size++;
+    return insertNode;
   }
 
   /**

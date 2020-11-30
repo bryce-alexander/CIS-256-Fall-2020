@@ -19,7 +19,7 @@ public class Kruskal {
    * @param g The weighted, undirected graph whose MST we want to compute.
    * @return A newly constructed WUGraph representing the MST of g.
    */
-  public static WUGraph minSpanTree(WUGraph g) { ///////////////////////CHANGED FROM WUGRAPH, CHANGE BACK AFTER TESTING///////////////////////
+  public static WUGraph minSpanTree(WUGraph g) {
     WUGraph newGraph = new WUGraph();                               // Create a new graph with same vertices as graph g
     Object[] vertices = g.getVertices();
     for (int i = 0; i < vertices.length; i++) {
@@ -81,7 +81,7 @@ public class Kruskal {
    * @return integer representing the index position for "object" given the array size
    */
   protected static int compFunction(Object object, int arraySize) {
-    return Math.abs(((2*object.hashCode()+14) % 999999937) % (arraySize));
+    return Math.abs(((2*object.hashCode()+140321657) % 999999937) % (arraySize));
   }
 
   public static void main(String[] args) {
