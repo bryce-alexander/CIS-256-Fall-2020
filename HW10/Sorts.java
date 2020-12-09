@@ -27,12 +27,12 @@ public class Sorts {
         // Replace the following line with your solution.
         int N = keys.length;
         int R = 16;
-        int redixNum = 0;
+        int redixNum;
         int[] aux = new int[N];
         int[]count = new int[R + 1];
 
         // Compute frequency.
-        for(int i = 0; i < N; i++) {
+        for (int key : keys) {
 
             // Calculates the correct significant digit to use.
             redixNum = keys[i] / (int) Math.pow(R, whichDigit) % R;
@@ -45,7 +45,7 @@ public class Sorts {
         }
 
         // Distribute.
-        for(int i = 0; i < N; i++) {
+        for (int key : keys) {
             redixNum = keys[i] / (int) Math.pow(R, whichDigit) % R;
             aux[count[redixNum]++] = keys[i];
         }
@@ -65,7 +65,7 @@ public class Sorts {
      **/
     public static int[] radixSort(int[] keys) {
         // Replace the following line with your solution.
-        int aux[] = countingSort(keys, 0);
+        int[] aux = countingSort(keys, 0);
 
         for(int i = 1; i < keys.length; i++) {
             aux = countingSort(aux, i);
