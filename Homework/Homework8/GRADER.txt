@@ -1,0 +1,28 @@
+GRADER file for Homework 8
+
+Your Name:  
+ 
+
+Part III.  Running time comparisons
+
+  List size         mergesort             quicksort
+      100           1 msec                0 msec
+    1,000           2 msec                2 msec
+   10,000           8 msec                8 msec
+  100,000           52 msec               42 msec
+1,000,000           1001 msec             531 msec
+
+Part IV.
+
+  Is mergesort stable?  
+  Why or why not?
+
+  My mergesort is stable because, in mergeSortedQueues(), if a size-two queue with the same keys is compared,
+  the first key remains in the first position.  Only if the first item is smaller will it be switched to the
+  end of the queue.
+
+  Is quicksort stable?  
+  Why or why not?
+
+  My quicksort is not stable because, even though items are added in the order they are encountered during pivot(),
+  the randomly selected pivot value is not necessarily the first item that holds that value in the queue.

@@ -1,0 +1,53 @@
+WUGraph.java:
+
+Vertex:
+  -> Hashtable (vertices) is used to represent vertex object as well as DList (vertexList) to facilitate getVertices() in O(|V|)
+  -> Second hashtable (vertexNodes) stores a vertex and its DList node to facilitate removeVertex() in O(d)
+  -> Hashtable key is object representing vertex
+  -> Hashtable value DList represents the adjacency list of neighbors
+  -> Each node in adjacency list contains ITEM which is the VertexPair representing the edge
+  -> Edges in DList are represented by VertexPair objects
+  -> Degree is determined by finding the length of the adjacency list representing the neighbors
+  -> When a vertex is removed, the adjacency list is traversed and those edges are removed both from the edge table
+     as well as the adjacency lists of the corresponding vertexes
+
+Edges:
+  -> Hashtable is used to represent edge objects
+  -> Hashtable key is VertexPair which represents the edge
+  -> Hashtable value is weight
+  -> VertexPair contains references to the nodes in each vertex adjacency list
+  -> When an edge is added, the edge is also added to the adjacency list of each vertex in the edge
+  -> Each VertexPair contains references to the adjacency list of their vertexes as well as the nodes they are
+     stored in for easy removal
+
+removeVertex():
+  -> Vertex removal is performed through the following series of operations:
+     1. Traverse adjacency list and perform removeEdge on each edge in adjacency list: O(d) + O(1) + O(1)
+     2. Find vertexList node by finding the value associated with the vertex key in vertexNodes: O(1)
+     3. Remove corresponding node from vertexList: O(1)
+     4. Remove vertex key from vertexNodes: O(1)
+     5. Final runtime: O(d + 1 + 1 + 1 + 1 + 1) == O(d)
+
+getVertices():
+  -> An array of current vertices is created by performing the following series of operations:
+     1. Initialize new array with the size of the current vertex list: O(1)
+     2. Walk down vertexList and insert each value into the newly created array: O(|V|)
+     3. Final runtime: O(1 + |V|) == O(|V|)
+
+
+
+Kruskal.java:
+
+minSpanTree():
+  -> This function creates the minimum spanning tree of a given graph "g" using Kruskal's algorithm by performing
+     the following operations:
+     1. Create a new empty WUGraph
+     2. Add all the vertices of graph "g" to the newly created WUGraph
+     3. Create a new Object array to hold edges from graph "g"; this array holds Object[3] at each index which contains
+        a vertex, its matching edge vertex, and the weight of the given edge
+     4. Traverse the neighbors of each vertex in graph "g" and determine whether that edge (or an equivalent edge)
+        exists in the newly created edges array.  If it does not, add it to "edges"; if it does, do nothing.
+     5. Sort the edges with a version of quicksort which is designed to read the weights of each Object[3] in "edges"
+     6. Traverse the sorted "edges" array; for each edge, add each vertex to the disjoint set "edgeSet" if both
+        vertices in the edge do not have the same root, then add this edge to the newly created WUGraph.
+     7. Return the new graph with edges which represent the Kruskal's MST.

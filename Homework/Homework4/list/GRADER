@@ -1,0 +1,10 @@
+Submission for Bryce Rankin, Inderpaul Bhander, Milton Sandino; no applicable CS61B login ID
+
+An application can inadvertently violate invariants in a few ways as listed below:
+- Call insertFront/insertBack(null) will insert a null node into the list and cause nodes referencing it to return
+  null in the method calls
+- Call prev/next(node) for the first/last node in the array and .next will return null.
+
+It is worth noting that while these methods have the outward appearance of violating the invariants to the user, they
+may remain intact from a functional level if you actually inspect the elements and their connections directly
+from an application within the package who can access protected fields.
